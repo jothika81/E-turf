@@ -1,0 +1,28 @@
+{% extends 'manager_index.html' %}
+{% block content %}
+<br><br><br><br><br><br>
+<div class="main-panel">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">username</th>
+        <th scope="col">turflocation</th>
+        <th scope="col">BookingPackage</th>
+        <th scope="col">Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in data %}
+        <td>{{ i.username }}</td>
+        <td>{{ i.turflocation }}</td>
+        <td>{{ i.BookingPackage }}</td>
+        <td>{{ i.Time }}</td>
+        <td><a href="{% url 'regapproved' id=i.id %}"><button>approve</button></a></td>
+        <td><a href="{% url 'regdeclained' id=i.id %}"><button>decline</button></a></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+</table>
+</div>
+{% endblock %}

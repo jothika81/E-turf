@@ -1,0 +1,37 @@
+{% extends 'manager_index.html' %}
+{% block content %}
+<div class="main-panel">
+<table class=" table">
+      <thead>
+        <tr>
+          <th>username</th>
+          <th>password</th>
+          <th>email</th>
+          <th>Phonenum</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        
+        <tr>
+          <td>{{ i.username }}</td>
+          <td>{{ i.password }}</td>
+          <td>{{ i.email }}</td>
+          <td>{{ i.Phonenum }}</td>
+       
+        {% if i.status == 1 %}
+        <td style="color: rgb(14, 255, 6);">status:You are approved</td>
+        <td><a href="{% url 'loginM'  %}"><button class="btn round btn-success">Login</button></a></td>
+        {% elif i.status == 2 %}
+        <td style="color: rgb(255, 23, 6);">status:You are declained</td>
+        {% elif i.status == 0 %}
+        <td style="color: rgb(64, 77, 199);">status:pls wait for your approval</td>
+      </tr>
+        {% endif %}
+      {% endfor %}
+      </tbody>
+
+</table>
+</div>
+  {% endblock %}
+  

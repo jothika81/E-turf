@@ -1,0 +1,24 @@
+{% extends 'manager_index.html' %}
+{% block content %}
+<div class="main-panel">
+  <div class="container-fluid" >
+    <div class="col-lg-9">
+        <div class="row g-4 justify-content-center">
+            {% for i in data %}
+            <div class="col-md-6 col-lg-6 col-xl-4" style=" height: 650px; ">
+                <div class="rounded position-relative fruite-item">
+                    <div  class="fruite-img">
+                        <img src="{{ i.locationimage.url }}" style=" height: 250px; "  class="img-fluid w-100 rounded-top" alt="">
+                    </div>
+                    <br>
+                    <div >
+                        <h4>{{ i.locationname }}</h4>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

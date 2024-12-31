@@ -1,0 +1,35 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+{% for i in data %}
+<form action="{% url 'update' id=i.id %}" method="POST">
+  {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="locationname">locationname</label>
+        <input  type="text" name="locationname" class="form-control" value="{{ i.locationname }}" id="locationname" placeholder="locationname">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">locationimage</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file"  value="{{ i.locationimage }}" name="locationimage" class="custom-file-input" id="exampleInputFile">
+            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text">Upload</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  {% endfor %}
+{% endblock %}

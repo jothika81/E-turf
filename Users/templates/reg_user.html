@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% block content %}
+<form action="{% url 'adduser' %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+<br>
+<div class="container-fluid contact py-5"></div>
+<div class="container py-5">
+    <div class="p-5 bg-light rounded">
+      <center><p  style="color: rgb(4, 5, 4); font-style: italic;"> "I Learned all about life with a ball at my feet." </p></center>
+            <div class="mb-3 row">
+                <label for="inputname" class=" col-sm-1 col-form-label " style="color: black;"><i style="color: rgb(16, 92, 32);" class="fas fa-user fa-1x">username</i></label>
+                <div class="col-sm-10">
+                  <input type="text"  name="Name" class="form-control" id="inputname" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputpassword" class=" col-sm-1 col-form-label " style="color: black;"><i style="color: rgb(16, 92, 32);" class="fas fa-key fa-1x">password</i></label>
+                <div class="col-sm-10">
+                  <input type="password" name="password" class="form-control" id="password" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="email"  class=" col-sm-1 col-form-label " style="color: black;"><i style="color: rgb(16, 92, 32);" class="fas fa-comments fa-1x">email</i></label>
+                <div class="col-sm-10">
+                  <input type="email" name="email" class="form-control" id="email" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputnumber"  class=" col-sm-1 col-form-label " style="color: black;"><i style="color: rgb(16, 92, 32);" class="fas fa-phone-alt fa-1x">Phonenum</i></label>
+                <div class="col-sm-10">
+                  <input type="int" name="Phonenum" class="form-control" id="inputnumber">
+                </div>
+            </div>
+            <button class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" type="submit">submit</button>
+          
+    </div>
+</div>
+</div>
+</form>
+{% endblock %}

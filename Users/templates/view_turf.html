@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block content %}
+         
+<br><br><br><br><br><br>
+<div class="container-fluid">
+<div class=".col-lg-3">
+    <div class="row g-4 justify-content-center">
+        <h1 class="fw-bold mb-0" style="font-style: italic;"><center>Our Turfs</center></h1>
+        {% for i in data %}
+        <div class="col-md-6 col-lg-6 col-xl-4">
+            <div class="rounded position-relative fruite-item">
+                <div class="fruite-img">
+                    <img src="{{ i.turfimage.url }}" style="height: 250px;" class="img-fluid w-100 rounded-top" alt="">
+                </div>
+                <br>
+                <div>
+                    <h4>{{ i.turfname }}</h4>
+                    <h4>{{ i.turflocation }}</h4>
+                    <a href="{% url 'turfdetailed' id=i.id %}"  class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class=" me-2 text-primary"></i>viewmore</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+ {% endblock %}

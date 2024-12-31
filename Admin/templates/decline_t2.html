@@ -1,0 +1,24 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">username</th>
+        <th scope="col">password</th>
+        <th scope="col">email</th>
+        <th scope="col">Phonenum</th>
+        <th scope="col">Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in data %}
+        <td>{{ i.username }}</td>
+        <td>{{ i.password }}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.Phonenum }}</td>
+        <td>{{ i.Gender }}</td>
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

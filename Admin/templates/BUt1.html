@@ -1,0 +1,33 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<table class="table">
+ 
+    <thead>
+      <tr>
+        <th scope="col">username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">turfid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in data %}
+        <td>{{ i.username.username }}</td>
+        <td>{{ i.Email }}</td>
+        <td>{{ i.Date }}</td>
+        <td>{{ i.Time }}</td>
+        <td>{{ i.turfname.turfname }}</td>
+        {% if i.status == 1 %}
+        <td style="color: rgb(59, 236, 15);">approved</td>
+        {% elif i.status == 2 %}
+        <td style="color: #ff0000;">declined</td>
+        {% elif i.status == 0 %}
+        <td style="color: #d2ff09;">waiting</td>
+      </tr>
+      {% endif %}
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

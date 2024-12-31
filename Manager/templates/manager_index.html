@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Manager</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/jvectormap/jquery-jvectormap.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/owl-carousel-2/owl.theme.default.min.css' %}">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/download.png' %}" />
+    
+  </head>
+  <body style="background-image:url('https://img.freepik.com/fotos-premium/bola-de-futebol-de-renderizacao-3d-no-gol-bola-de-futebol-na-rede-com-projetor-e-fundo-claro-do-estadio-conceito-do-sucesso-bola-de-futebol-em-fundo-azul_92790-459.jpg?w=740');">
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: rgb(54, 5, 56);">
+      
+         <li class="nav-item menu-items">
+            {% if 'username_u' in request.session %}
+            <a href="{% url 'manager' %}" class="nav-item nav-link" style="color: rgb(224, 16, 145);">HOME</a>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'Allturf' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">All turf</a>
+            </li><br>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'approvedBU' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">Booking approved</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'declainedBU' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">Booking declained</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'BUrequest' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">Booking request</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'Ownturf' %}" class="nav-item nav-link " style="color: rgb(156, 65, 152);">Own turf</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+            <a href="{% url 'history' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">Reg history</a>
+            </li>
+            {% else %}
+            <a href="{% url 'loginM' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">login</a>
+            <a href="{% url 'registerM' %}" class="nav-item nav-link" style="color: rgb(156, 65, 152);">register</a>
+            {% endif %}
+          </li>
+      </nav>
+      <!-- partial -->
+        <!-- partial:partials/_navbar.html -->
+      <div class="nav-item"> 
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="background-color: rgb(125, 74, 126);">
+            <ul class="navbar-nav w-100" >
+              <li class="nav-item w-100">
+                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <input type="text" class="form-control" placeholder="Search">
+                </form>
+              </li>
+              <li class="nav-item w-1" >
+            <a href="" class="nav-item nav-link " style="color: rgb(255, 157, 239);">WELCOME {{ request.session.username_u }}</a></li>
+            <li class="nav-item w-100">
+            <a href="{% url 'managerlogout' %}" style="color:   rgb(255, 157, 239);"class="nav-item nav-link">logout</a> 
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>  
+{% block content%}
+        <!-- partial -->   
+        <div class="main-panel">
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" >
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 class="mb-0">{{ Totellocation }}</h3>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="icon icon-box-success ">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="text-muted font-weight-normal">Totel location </h6>
+                    <a href="{% url 'Manlocations' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 class="mb-0">{{totelturf}}</h3>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="icon icon-box-success">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="text-muted font-weight-normal">Totel turf </h6>
+                    <a href="{% url 'Allturf' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 class="mb-0">{{totelbooking}}</h3>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="icon icon-box-danger">
+                        <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="text-muted font-weight-normal">Totel booking</h6> 
+                    <a href="{% url 'bookeduser' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9">
+                      <div class="d-flex align-items-center align-self-start">
+                        <h3 class="mb-0">{{toteluserrequest}}</h3>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="icon icon-box-success ">
+                        <span class="mdi mdi-arrow-top-right icon-item"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <h6 class="text-muted font-weight-normal">Totel user request </h6>
+                  <a href="{% url 'BUrequest' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="row">  
+          <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="mb-0">{{approveduser}}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger">
+                      <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+                <h6 class="text-muted font-weight-normal">approveduser</h6>
+                <a href="{% url 'approvedBU' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="mb-0">{{ownturf}}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger">
+                      <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+                <h6 class="text-muted font-weight-normal">Ownturf</h6> 
+                  <a href="{% url 'Ownturf' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="d-flex align-items-center align-self-start">
+                      <h3 class="mb-0">{{declineduser}}</h3>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="icon icon-box-danger">
+                      <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                    </div>
+                  </div>
+                </div>
+                <h6 class="text-muted font-weight-normal">Declined user  </h6>
+                  <a href="{% url 'declainedBU' %}" class="small-box-footer">More info  <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+          
+ {% endblock %}
+</div>
+          <!-- partial:partials/_footer.html -->
+ <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted d-block d-sm-inline-block">Copyright © Mangers.com 2001</span>
+            </div>
+ </footer>
+  
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{% static 'assets/vendors/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/progressbar.js/progressbar.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap.min.js' %}"></script>
+    <script src="{% static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'assets/vendors/owl-carousel-2/owl.carousel.min.js' %}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/hoverable-collapse.js' %}"></script>
+    <script src="{% static 'assets/js/misc.js' %}"></script>
+    <script src="{% static 'assets/js/settings.js' %}"></script>
+    <script src="{% static 'assets/js/todolist.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

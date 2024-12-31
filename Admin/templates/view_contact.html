@@ -1,0 +1,22 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">text</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in data %}
+        <td>{{ i.Name }}</td>
+        <td>{{ i.Email }}</td>
+        <td>{{ i.text }}</td>
+          <td> <a href="{% url 'deletes' id=i.id %}"> <button>delete</button></a></td> 
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+{% endblock %}

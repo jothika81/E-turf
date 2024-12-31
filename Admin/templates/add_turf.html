@@ -1,0 +1,76 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<form action="{% url 'addturf' %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label for="turfname">turfname</label>
+        <input  type="text" name="turfname" class="form-control" id="turfname" placeholder="turfname">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">turfimage</label>
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" name="turfimage" class="file-input" id="exampleInputFile">
+            <label class="file-label" for="exampleInputFile">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <span class="input-group-text">Upload</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="turf">locationname</label>
+        <div class="dropdown">
+        
+            <select name="locationname">
+              {% for i in data1 %}
+              <option value="{{i.locationname }}"> {{ i.locationname }}</option>
+              {% endfor %}
+            </select>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="turf">Managers</label>
+        <div class="dropdown">
+        
+            <select name="manager">
+              {% for i in data %}
+              <option value="{{i.username }}"> {{ i.username }}</option>
+              {% endfor %}
+            </select>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="turf">BookingPackage</label>
+        <input type="text" name="BookingPackage" class="form-control" id="BookingPackage" placeholder="BookingPackage">
+      </div>
+      <div class="form-group">
+        <label for="turf">Facilities</label>
+        <input type="text" name="Facilities" class="form-control" id="Facilities" placeholder="Facilities">
+      </div>
+      <div class="form-group">
+        <label for="turf">Time</label>
+        <div class="dropdown">
+        <select name="Time">
+          <option>select</option>
+          <option>24hr</option>
+            <option> 6.30am - 10.30am</option>
+            <option> 1.00pm - 10.00pm</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    
+  </form>
+{% endblock %}

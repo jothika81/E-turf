@@ -1,0 +1,39 @@
+{% extends 'manager_index.html' %}
+{% block content %}
+<form class="main-panel" action="{% url 'addmanager' %}" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+<div class="container-fluid">
+            <div class="mb-3 row">
+                <label for="inputname" class="col-sm-2 col-form-label">Managername</label>
+                <div class="col-sm-10">
+                  <input type="text"  name="username" class="form-control" id="inputname" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputpassword"  class="col-sm-2 col-form-label">password</label>
+                <div class="col-sm-10">
+                  <input type="password" name="password" class="form-control" id="password" >
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="email"  class="col-sm-2 col-form-label">email</label>
+                <div class="col-sm-10">
+                  <input type="email" name="email" class="form-control" id="email" >
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputnumber"  class="col-sm-2 col-form-label">Phonenum</label>
+                <div class="col-sm-10">
+                  <input type="int" name="Phonenum" class="form-control" id="inputnumber">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputgender"  class="col-sm-2 col-form-label">Gender</label>
+                  <input type="radio" name="Gender" {% if 'male' in i.Gender %} checked {% endif %} value="male">male<br>
+                  <input type="radio" name="Gender" {% if 'female' in i.Gender %} checked {% endif %} value="female">female<br>
+            </div>
+         <button type="submit" class="btn border border-primary rounded-pill ">Submit</button>
+</div>
+</form>
+{% endblock %}

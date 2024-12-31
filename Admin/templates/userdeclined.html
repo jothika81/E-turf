@@ -1,0 +1,26 @@
+{% extends 'admin_index.html' %}
+{% block content %}
+<div class="main-panel">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th scope="col">Turfimage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for i in data %}
+        <td>{{ i.username.username }}</td>
+        <td>{{ i.Email }}</td>
+        <td>{{ i.Date }}</td>
+        <td>{{ i.Time }}</td>
+        <td>{{ i.turfname.turfimage }}</td>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
