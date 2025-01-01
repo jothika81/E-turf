@@ -127,5 +127,3 @@ def userapproved(request):
 def userdeclined(request):
     data=booking.objects.filter(status=2)
     return render(request,'userdeclined.html',{'data':data})
-def jo(request):
-    return render(request,'jo.html')
